@@ -5,3 +5,5 @@
     <li><%= link_to task.id, task %> : <%= task.content %> &gt; <%= task.status %></li>
   <% end %>
 </ul>
+
+<%= link_to "新規タスクの登録", new_task_path, class: "btn btn-primary" %>
