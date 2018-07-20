@@ -1,9 +1,17 @@
-<h1>タスクリスト</h1>
+<h1 class="text-center">タスクリスト</h1>
 
-<ul>
+<div class="row">
   <% @tasks.each do |task| %>
-    <li><%= link_to task.id, task %> : <%= task.content %> &gt; <%= task.status %></li>
+    <div class="col-sm-6 col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="label label-default"><%= task.status %></span>
+          <%= link_to task.id, task %>
+        </div>
+        <div class="panel-body"><%= task.content %></div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
 
 <%= link_to "新規タスクの登録", new_task_path, class: "btn btn-primary" %>

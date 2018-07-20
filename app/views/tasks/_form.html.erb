@@ -2,16 +2,6 @@
   <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-lg-offset-3 col-lg-6">
     
 <%= form_for(task) do |f| %>
-  <% if task.errors.any? %>
-    <div class="alert alert-warning">
-      <ul>
-        <% task.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
   <div class="form-group">
     <%= f.label :content, "タスク" %>
     <%= f.text_field :content, class: "form-control" %>
@@ -21,6 +11,16 @@
     <%= f.label :status, "ステータス" %>
     <%= f.select :status, { "新規": "新規", "着手中": "着手中", "完了": "完了" }, { include_blank: true }, { class: "form-control" } %>
   </div>
+  
+  <% if task.errors.any? %>
+    <div class="alert alert-warning">
+      <ul>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   
   <%= f.submit "登録", class: "btn btn-primary" %>
 <% end %>
