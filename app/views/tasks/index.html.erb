@@ -1,17 +1,12 @@
-<h1 class="text-center">タスクリスト</h1>
-
-<div class="row">
-  <% @tasks.each do |task| %>
-    <div class="col-sm-6 col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span class="label label-default"><%= task.status %></span>
-          <%= link_to task.id, task %>
-        </div>
-        <div class="panel-body"><%= task.content %></div>
-      </div>
+<% if logged_in? %>
+  <h1>タスクリスト</h1>
+  <%= render "tasks", tasks: @tasks %>
+  <%= link_to "新規タスクの登録", new_task_path, class: "btn btn-primary" %>
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>タスクリスト課題</h1>
+      <%= link_to "ユーザ登録", signup_path, class: "btn btn-primary"%>
     </div>
-  <% end %>
-</div>
-
-<%= link_to "新規タスクの登録", new_task_path, class: "btn btn-primary" %>
+  </div>
+<% end %>
